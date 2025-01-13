@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Conversion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background-color:#f8d7db;text-align:center;padding:20px;font-family:'Poppins',sans-serif;color:#000000}
+    h1,p{margin-bottom:20px}
+    .highlight{background-color:#000;color:#fff;font-size:2rem;font-weight:bold;display:inline-block;padding:10px 20px;border-radius:8px;margin:20px 0}
+    .btn-currency{font-size:1;font-weight:bold;padding:12px 30px;margin:10px;border:2px solid #000;background-color:#fff;color:#000;border-radius:8px;cursor:pointer;transition:background-color 0.3s ease,color 0.3s ease}
+    .btn-currency:hover{background-color:#000;color:#fff}
+    .btn-yen,.btn-won{border-color:#fffcfd}
+    .output-box{background-color:#000;color:#fff;font-size:1.5rem;font-weight:bold;display:inline-block;padding:10px 20px;border-radius:8px;margin-top:20px;width:250px}
+    .input-box{margin-top:20px;padding:10px;border-radius:8px;font-size:1.2rem}
+  </style>
+</head>
+<body>
+  <h1>Currency Converter</h1>
+
+  <input type="number" id="userAmount" class="input-box" placeholder="Enter amount in Pesos"/>
+
+  <div class="highlight">Convert your amount to:</div>
+  <button class="btn-currency btn-yen" onclick="convertToYen()">Yen (JPY)</button><button class="btn-currency btn-won" onclick="convertToWon()">Korean Won (KRW)</button>
+
+  <div class="output-box" id="conversionResult">--</div>
+
+  <script>
+    function convertToYen(){
+      const pesos = parseFloat(document.getElementById('userAmount').value); if(isNaN(pesos) || pesos<=0){document.getElementById('conversionResult').innerHTML = "Please enter a valid amount!"; return;} 
+      const yenRate = 2.5; const yen = (pesos * yenRate).toFixed(2); document.getElementById('conversionResult').innerHTML = `${yen} JPY`;
+    }
+    function convertToWon(){ const pesos = parseFloat(document.getElementById('userAmount').value); if(isNaN(pesos) || pesos<=0){document.getElementById('conversionResult').innerHTML = "Please enter a valid amount!"; return;} 
+      const wonRate = 13.5; const won = (pesos * wonRate).toFixed(2); document.getElementById('conversionResult').innerHTML = `${won} KRW`; }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
